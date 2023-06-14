@@ -19,7 +19,7 @@
             compatible = "zmk,behavior-mod-morph";
             label = "BKSP_DEL";
             #binding-cells = <0>;
-            bindings = <&kp BSCP>, <&kp DEL>;
+            bindings = <&kp BKSP>, <&kp DEL>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
         lftrt: left_right {
