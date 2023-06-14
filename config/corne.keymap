@@ -9,8 +9,9 @@
 #include <dt-bindings/zmk/bt.h>
 
 #define BASE    0
-#define NUM_NAV 1
-#define FUNC    2
+#define NUM_SYM 1
+#define NAV     2
+#define NUMPAD  3
 
 / {
     behaviors {
@@ -50,43 +51,59 @@
     keymap {
         compatible = "zmk,keymap";
         base_layer {
-// ----------------------------------------------------------------------------------------------
-// | ESC  |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  |  GQT -/=           |
-// | ALT  |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '                 |
-// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | MORPH (ALT) LFT/RT |
-//           | GUI | GQT TAB/CTRL | NUM |   | MORPH (SHFT) BKSP/DEL | SPC | GQT ENT/SHFT        |
+// -----------------------------------------------------------------------------------------------------
+// | TAB         |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  |  -                 |
+// | GQT ESC/ALT |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '                 |
+// | SHFT        |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | MORPH (ALT) LFT/RT |
+//                  | GUI | CTRL | LT BKSP/NUM |   | LT SPC/NAV | MORPH (SHFT) BKSP/DEL | GQT ENT/SHFT |
             bindings = <
-   &kp ESC   &kp Q &kp W &kp E &kp R &kp T       &kp Y &kp U  &kp I     &kp O   &kp P    &gqt MINUS EQUAL
-   &td LALT  &kp A &kp S &kp D &kp F &kp G       &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-   &td LSHFT &kp Z &kp X &kp C &kp V &kp B       &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &lftrt
-       &kp LGUI &gqt TAB LCTRL &to NUM_NAV       &bd &kp SPACE &gqt RET LSHFT
+   &kp TAB        &kp Q &kp W &kp E &kp R &kp T       &kp Y &kp U &kp I     &kp O   &kp P    &kp MINUS
+   &gqt ESC LALT  &kp A &kp S &kp D &kp F &kp G       &kp H &kp J &kp K     &kp L   &kp SEMI &kp SQT
+   &kp LSHFT      &kp Z &kp X &kp C &kp V &kp B       &kp N &kp M &kp COMMA &kp DOT &kp FSLH &lftrt
+            &kp LGUI &kp LCTRL &lt NUM_SYM BKSP       &lt NAV SPACE &bd &gqt RET LSHFT
             >;
         };
-        num_nav_layer {
+        num_sym_layer {
 // ------------------------------------------------------------------------------------------
-// | ` |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  |     |
-// |   | LFT | UP  | DWN | RGT | HOME|   |  -  |  4  |  5  |  6  |  [  |  ]  |
-// |   | LFT | DWN | RGT | APP | END |   |  +  |  1  |  2  |  3  |  \  |     |
-//                 |     |     | FUNC|   |     | BASE|     |
+// | ` |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  |  =  |
+// |   |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  |  +  |
+// |   |     |     |     |  {  |  [  |   |  ]  |  }  |  \  |  |  |     |     |
+//                 |     |     |     |   |     |     |     |
             bindings = <
-   &kp GRAVE &kp N1 &kp N2 &kp N3 &kp N4 &kp N5            &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &trans
-   &trans &kp LEFT &kp UP &kp DOWN &kp RIGHT &kp HOME      &kp MINUS &kp N4 &kp N5 &kp N6 &kp LBKT &kp RBKT
-   &trans &kp LEFT &kp DOWN &kp RIGHT &kp K_APP &kp END    &kp PLUS  &kp N1 &kp N2 &kp N3 &kp BSLH &trans
-                            &trans &trans &to FUNC         &trans &to BASE &trans
+   &kp GRAVE &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT      &kp CARET &kp AMPS &kp ASTRK &kp LPAR &kp RPAR &kp EQUAL
+   &trans    &kp N1   &kp N2 &kp N3   &kp N4   &kp N5         &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp PLUS
+   &trans    &none    &none  &none    &kp LBRC &kp LBKT       &kp RBKT  &kp RBRC &kp BSLH &kp PIPE &trans &trans
+                                   &trans &trans &trans       &trans &trans &trans
             >;
         };
 
-        func_layer {
+        nav_layer {
 // -----------------------------------------------------------------------------------------
-// | ESC | F1   | F2   | F3   | F4   | F5   |    | F6 | F7 | F8 | F9 | F10 | F11 |
-// |     |BT CLR| BT 0 | BT 1 | BT 2 | BT 3 |    |    |    |    |    |     | F12 |
-// |     |      |      |      |      |      |    |    |    |    |    |     |     |
-//                     |      |      |      |    |    |BASE|    |
+// | TAB | HOME | PG_UP| PG_DN| END  | INS |   | F1   | F2 | F3 | F4 | F5 |   F6   |
+// |     | LFFT |  UP  | DOWN | RIGHT| APP |   | F7   | F8 | F9 | F10| F11|   F12  |
+// |     |      |      |      |      |     |   |BT_CLR| BT0| BT1| BT2| BT3| NUM_PAD|
+//                     |      |      |     |   |      |    |    |
             bindings = <
-   &kp ESC  &kp F1 &kp F2 &kp F3 &kp F4 &kp F5   &kp F6 &kp F7  &kp F8 &kp F9 &kp F10 &kp F11
-   &trans   &trans   &trans &trans   &trans   &trans      &kp MINUS &kp EQUAL &kp LBKT        &kp RBKT &kp BSLH &kp GRAVE
-   &trans   &trans   &trans &trans   &trans   &trans      &kp UNDER &kp PLUS  &kp LBRC        &kp RBRC &kp PIPE &kp TILDE
-                             &trans &trans   &kp SPACE   &kp RET   &to BASE    &kp RALT
+   &kp TAB &kp HOME &kp PG_UP &kp PG_DN &kp END   &kp INS     &kp F1 &kp F2  &kp F3 &kp F4 &kp F5 &kp F6
+   &trans  &kp LEFT &kp UP    &kp DOWN  &kp RIGHT &K_APP      &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp F12
+   &trans  &none    &none     &none     &none     &none       &bt BT_CLR &bt BT_SEL 0  &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &to NUMPAD
+                              &trans    &trans    &trans      &trans     &trans     &trans
+            >;
+        };
+
+
+
+        num_pad {
+// -----------------------------------------------------------------------------------------
+// | TAB |      | UP   |      |     |     |  | GQT (/) | N7 | N8 | N9 |  -  | BASE|
+// |     | LEFT | DOWN | RIGHT|     |     |  |  *      | N4 | N5 | N6 |  +  |  =  |
+// |     |      |      |      |     |     |  |  /      | N1 | N2 | N3 |  .  | RET |
+//                     |      |     | BKSP|  | SPC  |    | N0 |
+            bindings = <
+   &kp TAB &none    &kp UP   &none     &none &none      &kp gqt LPAR RPAR &kp N7 &kp N8 &kp N9 &kp MINUS &to BASE
+   &trans  &kp LEFT &kp DOWN &kp RIGHT &none &none      &kp ASTRK         &kp N4 &kp N5 &kp N6 &kp PLUS  &kp EQUAL
+   &trans  &none    &none    &none     &none &none      &kp FSLH          &kp N1 &kp N2 &kp N3 &kp DOT   &kp RET
+                            &trans &trans &kp BKSP      &kp SPACE   &trans    &kp N0
             >;
         };
     };
