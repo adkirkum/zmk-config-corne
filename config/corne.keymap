@@ -19,22 +19,8 @@
             compatible = "zmk,behavior-mod-morph";
             label = "BKSP_DEL";
             #binding-cells = <0>;
-            bindings = <&kp BSPC>, <&kp DEL>;
+            bindings = <&kp BKSP>, <&kp DEL>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-        lftrt: left_right {
-            compatible = "zmk,behavior-mod-morph";
-            label = "BKSP_DEL";
-            #binding-cells = <0>;
-            bindings = <&kp LEFT>, <&kp RIGHT>;
-            mods = <(MOD_LALT|MOD_RALT)>;
-        };
-        td: tap_dance {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp>, <&kp>;
         };
         gqt: global-quick-tap {
             compatible = "zmk,behavior-hold-tap";
@@ -51,15 +37,15 @@
     keymap {
         compatible = "zmk,keymap";
         base_layer {
-// -----------------------------------------------------------------------------------------------------
-// | TAB         |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  |  -                 |
-// | GQT ESC/ALT |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '                 |
-// | SHFT        |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | MORPH (ALT) LFT/RT |
-//                  | GUI | CTRL | LT BKSP/NUM |   | LT SPC/NAV | MORPH (SHFT) BKSP/DEL | GQT ENT/SHFT |
+// ----------------------------------------------------------------------------------------
+// | TAB         |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  |  -    |
+// | GQT ESC/ALT |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '    |
+// | SHFT        |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | LEFT  |
+//                  | GUI | CTRL | LT BKSP/NUM |   |LT SPC/NAV|MORPH BKSP/DEL|GQT ENT/SHFT|
             bindings = <
    &kp TAB        &kp Q &kp W &kp E &kp R &kp T       &kp Y &kp U &kp I     &kp O   &kp P    &kp MINUS
    &gqt LALT ESC  &kp A &kp S &kp D &kp F &kp G       &kp H &kp J &kp K     &kp L   &kp SEMI &kp SQT
-   &kp LSHFT      &kp Z &kp X &kp C &kp V &kp B       &kp N &kp M &kp COMMA &kp DOT &kp FSLH &lftrt
+   &kp LSHFT      &kp Z &kp X &kp C &kp V &kp B       &kp N &kp M &kp COMMA &kp DOT &kp FSLH &kp LEFT
             &kp LGUI &kp LCTRL &lt NUM_SYM BKSP       &lt NAV SPACE &bd &gqt LSHFT RET
             >;
         };
@@ -73,7 +59,7 @@
             bindings = <
    &kp GRAVE &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT      &kp CARET &kp AMPS &kp ASTRK &kp LPAR &kp RPAR &kp EQUAL
    &trans    &kp N1   &kp N2 &kp N3   &kp N4   &kp N5         &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp PLUS
-   &trans    &none    &none  &none    &kp LBRC &kp LBKT       &kp RBKT  &kp RBRC &kp BSLH &kp PIPE &trans &trans
+   &trans    &none    &none  &none    &kp LBRC &kp LBKT       &kp RBKT  &kp RBRC &kp BSLH &kp PIPE &trans &kp RIGHT
                                    &trans &trans &trans       &trans &trans &trans
             >;
         };
