@@ -41,7 +41,7 @@
             #binding-cells = <0>;
             bindings = <&macro_tap &kp LSHFT &kp INS>;
         };
-        slc: shft_ctrl_left{
+        scl: shft_ctrl_left{
             compatible = "zmk,behavior-macro";
             label = "SCL";
             #binding-cells = <0>;
