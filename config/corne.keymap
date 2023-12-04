@@ -82,7 +82,7 @@
                 ;
         };
     };
-}
+};
         
     keymap {
         compatible = "zmk,keymap";
