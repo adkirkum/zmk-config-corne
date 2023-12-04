@@ -41,7 +41,7 @@
             #binding-cells = <0>;
             bindings = <&macro_tap &kp LSHFT &kp INS>;
         };
-        shft_ctrl_left: shft_ctrl_left{
+        slc: shft_ctrl_left{
             compatible = "zmk,behavior-macro";
             label = "SCL";
             #binding-cells = <0>;
@@ -51,7 +51,7 @@
                 , <&macro_release &kp LSHFT &kp LCTRL>
                 ;
         };
-        ctrl_left: ctrl_left{
+        cl: ctrl_left{
             compatible = "zmk,behavior-macro";
             label = "CL";
             #binding-cells = <0>;
@@ -61,7 +61,7 @@
                 , <&macro_release &kp LCTRL>
                 ;
         };
-        shft_ctrl_right: shft_ctrl_right{
+        scr: shft_ctrl_right{
             compatible = "zmk,behavior-macro";
             label = "SCR";
             #binding-cells = <0>;
@@ -71,7 +71,7 @@
                 , <&macro_release &kp LSHFT &kp LCTRL>
                 ;
         };
-        ctrl_right: ctrl_right{
+        cr: ctrl_right{
             compatible = "zmk,behavior-macro";
             label = "CR";
             #binding-cells = <0>;
@@ -96,7 +96,7 @@
             bindings = <
    &kp TAB        &kp Q &kp W &kp E &kp R &kp T       &kp Y &kp U &kp I     &kp O   &kp P    &kp MINUS
    &gqt LALT ESC  &kp A &kp S &kp D &kp F &kp G       &kp H &kp J &kp K     &kp L   &kp SEMI &kp SQT
-   &kp LSHFT      &kp Z &kp X &kp C &kp V &kp B       &kp N &kp M &kp COMMA &kp DOT &kp FSLH &SHFT_INS
+   &kp LSHFT      &kp Z &kp X &kp C &kp V &kp B       &kp N &kp M &kp COMMA &kp DOT &kp FSLH &shft_ins
             &kp LGUI &kp LCTRL &lt NUM_SYM BKSP       &lt NAV SPACE &bd &gqt LSHFT RET
             >;
         };
@@ -124,7 +124,7 @@
             bindings = <
    &kp TAB &kp HOME &none   &none     &kp END   &kp INS     &kp F1 &kp F2  &kp F3 &kp F4 &kp F5  &kp F6
    &trans  &kp LEFT &kp UP  &kp DOWN  &kp RIGHT &kp K_APP   &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp F12
-   &trans  &SCL     &CL     &CR       &SCR      &none       &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &to NUMPAD
+   &trans  &scl     &cl     &cr       &scr      &none       &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &to NUMPAD
                               &trans    &trans    &trans      &trans     &trans     &trans
             >;
         };
