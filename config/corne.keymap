@@ -33,7 +33,7 @@
             bindings = <&kp>, <&kp>;
         };
     }
-{
+
     macros {
         shft_ins: shft_ins{
             compatible = "zmk,behavior-macro";
