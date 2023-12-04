@@ -83,7 +83,8 @@
         };
     };
 };
-        
+
+/ {        
     keymap {
         compatible = "zmk,keymap";
         base_layer {
