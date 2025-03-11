@@ -88,15 +88,15 @@
         compatible = "zmk,keymap";
         base_layer {
 // ----------------------------------------------------------------------------------------
-// | TAB         |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  |  -     |
-// | GQT ESC/ALT |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '     |
-// | SHFT        |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |SHFT_INS|
-//                  | GUI | CTRL | LT BKSP/NUM |   |LT SPC/NAV|MORPH BKSP/DEL|GQT ENT/SHFT|
+// | TAB         |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  |  -  |
+// | GQT ESC/ALT |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '  |
+// | SHFT        |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | DEL |
+//                  | GUI | CTRL | LT BKSP/NUM |   |LT SPC/NAV | BKSP | RETURN |
             bindings = <
    &kp TAB        &kp Q &kp W &kp E &kp R &kp T       &kp Y &kp U &kp I     &kp O   &kp P    &kp MINUS
    &gqt LALT ESC  &kp A &kp S &kp D &kp F &kp G       &kp H &kp J &kp K     &kp L   &kp SEMI &kp SQT
-   &kp LSHFT      &kp Z &kp X &kp C &kp V &kp B       &kp N &kp M &kp COMMA &kp DOT &kp FSLH &shft_ins
-            &kp LGUI &kp LCTRL &lt NUM_SYM BKSP       &lt NAV SPACE &bd &gqt LSHFT RET
+   &kp LSHFT      &kp Z &kp X &kp C &kp V &kp B       &kp N &kp M &kp COMMA &kp DOT &kp FSLH &kp DEL
+            &kp LGUI &kp LCTRL &lt NUM_SYM BKSP       &lt NAV SPACE &kp BKSP &kp RET
             >;
         };
 
@@ -116,14 +116,14 @@
 
         nav_layer {
 // -----------------------------------------------------------------------------------------
-// | TAB | HOME |      |      | END  | INS |   | F1   | F2 | F3 | F4 | F5 |   F6   |
+// | TAB | HOME |  SCL |  SCR | END  | INS |   | F1   | F2 | F3 | F4 | F5 |   F6   |
 // |     | LFFT |  UP  | DOWN | RIGHT| APP |   | F7   | F8 | F9 | F10| F11|   F12  |
-// |     | SCL  |  CL  |  CR  | SCR  |     |   |BT_CLR| BT0| BT1| BT2| BT3| NUM_PAD|
+// |     |      |      |      |      |     |   |BT_CLR| BT0| BT1| BT2| BT3| NUM_PAD|
 //                     |      |      |     |   |      |    |    |
             bindings = <
-   &kp TAB &kp HOME &none   &none     &kp END   &kp INS     &kp F1 &kp F2  &kp F3 &kp F4 &kp F5  &kp F6
+   &kp TAB &kp HOME &scl   &scr     &kp END   &kp INS     &kp F1 &kp F2  &kp F3 &kp F4 &kp F5  &kp F6
    &trans  &kp LEFT &kp UP  &kp DOWN  &kp RIGHT &kp K_APP   &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp F12
-   &trans  &scl     &cl     &cr       &scr     &none       &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &to NUMPAD
+   &trans  &none    &none   &none     &none    &none       &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &to NUMPAD
                               &trans    &trans    &trans      &trans     &trans     &trans
             >;
         };
